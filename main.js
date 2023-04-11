@@ -96,7 +96,7 @@
 
 // // scoping //
 
-// // scoping - scope in JavaScript refers to the current context of code, which determines the accessibility of variables to JavaScript. The two types of scope are local and global: Global variables are those declared outside of a block. Local variables are those declared inside of a block. //
+// // scoping - Scoping in JavaScript refers to the rules that determine where variables, functions, and objects are accessible in your code. In other words, scoping determines the accessibility and visibility of variables and functions in different parts of your code. JavaScript has two types of scoping: global scoping and local scoping. In global scoping, variables and functions are accessible from anywhere in your code. In local scoping, variables and functions are only accessible within a specific block of code, such as a function or loop. JavaScript uses lexical scoping, which means that the scope of a variable is determined by its location within the code. Variables declared outside of a function have a global scope, while variables declared inside a function have a local scope. Scoping is important in JavaScript because it helps prevent naming collisions, ensures code organization, and enables encapsulation. //
 
 //============================================================================================================================================//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -104,7 +104,7 @@
 
 // // lexical scoping //
 
-// // lexical scoping - lexical scope is the definition area of an expression. In other words, an item's lexical scope is the place in which the item got created. //
+// // lexical scoping - Lexical scoping, also known as static scoping, is a concept in programming that describes how variables are resolved in a nested structure of functions. It defines how variable names are resolved at compile-time based on their location in the source code. In JavaScript, each function creates its own lexical scope, which is the set of variables that are accessible within that function. When a variable is referenced inside a function, the JavaScript engine looks up the scope chain to find the value of the variable, starting with the current function's scope and working its way up the chain of enclosing functions until it finds a match. If the variable is not found in any of the scopes, a ReferenceError is thrown. This behavior allows for encapsulation of variables and functions within the scope of their parent functions, preventing naming conflicts and allowing for more modular code. //
 
 //============================================================================================================================================//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -112,7 +112,7 @@
 
 // // scope //
 
-// // scope - scope is a space or area or environment in which a certain variable is declared. //
+// // scope - Scope refers to the set of variables, functions, and objects that are accessible in a particular area of a code. The scope determines which variables are available for use in different parts of the code. In JavaScript, there are two main types of scope: global scope and local scope. //
 
 // // types of scope - 1. global scope , 2. function scope , 3. block scope. //
 
@@ -148,7 +148,7 @@
 
 // // block scope //
 
-// // this scope restricts the variable that is declared inside a specific block, from access by the outside of the block. //
+// // Block scope restricts the variable that is declared inside a specific block, from access by the outside of the block. //
 
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 // const age = 18;
@@ -166,9 +166,11 @@
 
 // // scope chain //
 
-// // scope chain - one variable has a scope (it may be global or local/function or block scope) is used by another variable or function having another scope. //
+// // scope chain - In JavaScript, the scope chain refers to the hierarchy of variable scopes that are available to a piece of code at any given point in time. When a variable is referenced in a function or block of code, JavaScript first looks for the variable in the local scope, and then works its way up the chain of enclosing scopes until it finds the variable or reaches the global scope. The scope chain is determined by the way that functions are nested within one another in JavaScript. When a function is defined within another function, the inner function has access to variables in the outer function's scope, as well as variables in any outer scopes that enclose it. This creates a chain of nested scopes that JavaScript uses to resolve variable references. //
 
-// // scope of a variable - scope of a variable is the place from where a variabel is being colled. //
+//--------------------------------------------------------------------------------------------------------------------------------------------//
+
+// // scope of a variable - The scope of a variable refers to the region of the program where the variable can be accessed. In JavaScript, variables declared using var, let, or const have different scopes. Variables declared using var have function scope, which means they can be accessed anywhere within the function where they are declared. If a variable is declared outside of any function, it has global scope, and can be accessed from anywhere in the program. Variables declared using let or const have block scope, which means they can be accessed only within the block where they are declared. A block is any code within curly braces { }, such as a function, a loop, or an if statement. It's important to understand the scope of variables in order to avoid unexpected behavior in your code. If you try to access a variable outside of its scope, you will get a reference error. //
 
 //--------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -180,7 +182,7 @@
 //   if (age >= 18) {
 //     const NID = true; // block scope. //
 //     var passport = true; // function scope. //
-//     // a variable decleared using var can be accessed from anywher fron the function (first()). //
+//     // a variable decleared using var can be accessed from anywher in the function (first()). //
 //   }
 
 //   function second() {
@@ -195,9 +197,9 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //============================================================================================================================================//
 
-// // hoistion //
+// // hoistiog //
 
-// // javaScript Hoisting refers to the process whereby the interpreter appears to move the declaration of functions, variables or classes to the top of their scope, prior to execution of the code. Hoisting allows functions to be safely used in code before they are declared. //
+// // Hoisting in JavaScript refers to the behavior where variable and function declarations are moved to the top of their respective scopes during the creation phase of the JavaScript execution context. This means that even if a variable or function is declared later in the code, it can still be accessed before its actual declaration. However, it's important to note that only the declarations are hoisted, not the actual assignments. //
 
 //============================================================================================================================================//
 
@@ -214,7 +216,7 @@
 
 //============================================================================================================================================//
 
-// // temporal Dead Zone is the period of time during which the let and const declarations cannot be accessed. temporal Dead Zone starts when the code execution enters the block which contains the let or const declaration and continues until the declaration has executed. //
+// // Temporal Dead Zone - TDZ is the period of time during which the let and const declarations cannot be accessed. temporal Dead Zone starts when the code execution enters the block which contains the let or const declaration and continues until the declaration has executed. //
 
 //============================================================================================================================================//
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -222,7 +224,17 @@
 
 // // this keyword //
 
-// // in JavaScript, the 'this' keyword refers to an object. which object depends on how this is being invoked (used or called).the this keyword refers to different objects depending on how it is used. //
+// // In JavaScript, this refers to the object that the function belongs to or the object that is currently being operated on.The value of this is determined by how the function is called, and it can have different values depending on the context in which it is used. //
+
+// 1. Global context: If this is used outside of any function or object, it refers to the global object (i.e. window in a browser or global in Node.js). //
+
+// 2. Function context: If this is used inside a function that is not a method of an object, it refers to the global object by default. However, if the function is called with a specific context (using call() or apply()), this will refer to that context. //
+
+// 3. Method context: If this is used inside a method of an object, it refers to the object itself. //
+
+// 4. Constructor context: If this is used inside a constructor function (a function that is used to create new objects), it refers to the new object that is being created. //
+
+//It's important to be aware of how this works in JavaScript, as it can affect how your code behaves and can lead to unexpected results if not used correctly. //
 
 //============================================================================================================================================//
 
@@ -250,3 +262,37 @@
 // };
 
 // console.log(compiter.turboFan());
+
+//============================================================================================================================================//
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//============================================================================================================================================//
+
+// // closures //
+
+// // In JavaScript, a closure is created when a function is defined within another function, and the inner function has access to the outer function's variables and parameters even after the outer function has returned. Closures are useful for creating private variables and encapsulating code. They allow the inner function to access the state of the outer function, even after it has completed execution. Closures can also be used to create factory functions that generate new functions with specific behavior. In simple terms, a closure is a function that has access to variables in its outer (enclosing) scope, even after the outer function has finished executing. //
+
+//============================================================================================================================================//
+
+const refregarator = function () {
+  let coke = 5;
+
+  const mini = function () {
+    if (coke <= 0) {
+      console.log("No mere cokes left");
+    } else {
+      console.log(coke--);
+    }
+  };
+  return mini;
+};
+
+const drink = refregarator();
+
+drink();
+drink();
+drink();
+drink();
+drink();
+drink();
+drink();
+drink();
